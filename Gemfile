@@ -14,6 +14,7 @@ gem 'delayed_job_web'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
