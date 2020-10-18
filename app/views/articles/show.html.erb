@@ -1,0 +1,10 @@
+<%= content_for :title, @article %>
+
+<div class="container">
+  <h1><%= @article %></h1>
+  <p class="text-muted"><%= @article.author %> | <%= l @article.published_at.to_date, format: :long %></p>
+
+  <div>
+    <%= sanitize @article.content %>
+  </div>
+</div>
