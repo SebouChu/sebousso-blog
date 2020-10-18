@@ -11,6 +11,7 @@ gem 'delayed_job_web'
 
 gem 'image_processing', '~> 1.2'
 gem 'devise'
+gem 'omniauth-saml'
 gem 'cancancan'
 
 gem 'sassc-rails'

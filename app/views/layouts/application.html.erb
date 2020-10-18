@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SebouSSO - Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= content_for?(:title) ? raw("#{yield(:title)} - SebouSSO Blog") : "SebouSSO Blog" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="<%= body_classes %>">
+    <header class="mb-4">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <%= link_to 'SebouSSO Blog', root_path, class: 'navbar-brand' %>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbar-content"
+                aria-controls="navbar-content"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-content">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                Connected as <%= current_user %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
