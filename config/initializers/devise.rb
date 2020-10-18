@@ -277,12 +277,6 @@ Devise.setup do |config|
     idp_sso_target_url:     Rails.application.credentials.dig(:saml, :idp_sso_target_url),
     idp_cert:               Rails.application.credentials.dig(:saml, :idp_cert),
     name_identifier_format: "urn:oasis:names:tc:SAML:2.0:nameid-format:emailAddress",
-    request_attributes: [
-      { name: 'first_name',  name_format: 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', :friendly_name => 'Given name' },
-      { name: 'last_name',   name_format: 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', :friendly_name => 'Family name' },
-      { name: 'email',       name_format: 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', :friendly_name => 'Email address' },
-      { name: 'blog_role',   name_format: 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', :friendly_name => 'Blog role' },
-    ],
     attribute_statements: {
       first_name: ['first_name'],
       last_name: ['last_name'],
