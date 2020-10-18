@@ -1,0 +1,18 @@
+<%= content_for :title, @user %>
+
+<div class="container">
+  <h1><%= @user %></h1>
+
+  <p><strong>First name:</strong> <%= @user.first_name %></p>
+  <p><strong>Last name:</strong> <%= @user.last_name %></p>
+  <p><strong>Email:</strong> <%= @user.email %></p>
+  <p><strong>Role:</strong> <%= @user.role.humanize %></p>
+
+  <div class="actions">
+    <%= link_to 'Destroy',
+                [:admin, @user],
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-danger' %>
+  </div>
+</div>

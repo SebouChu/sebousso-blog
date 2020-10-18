@@ -2,4 +2,6 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
-//= require_tree .
+//= require summernote/summernote-bs4.min
+//= require jquery-warn-before-unload/jquery.warnBeforeUnload
+//= require_tree ./application

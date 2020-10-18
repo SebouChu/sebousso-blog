@@ -1,0 +1,35 @@
+<%= content_for :title, @article %>
+
+<div class="container">
+  <h1><%= @article %></h1>
+
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>Author:</strong> <%= link_to_if can?(:read, @article.author), @article.author, [:admin, @article.author] %></p>
+      <p><strong>Pinned:</strong> <%= @article.pinned? ? 'Yes' : 'No' %></p>
+    </div>
+    <div class="col-md-6">
+      <%= render 'components/publication-switch', object: @article %>
+      <p><strong>Published at:</strong> <%= l @article.published_at, format: :long %></p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <% if can?(:update, @article) %>
+      <%= link_to 'Edit', [:edit, :admin, @article], class: 'btn btn-primary' %>
+    <% end %>
+    <% if can?(:destroy, @article) %>
+      <%= link_to 'Destroy',
+                  [:admin, @article],
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div>
+    <%= sanitize @article.content %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<% target_url_options ||= {} %>
+
+<div class="form-group">
+  <div class="custom-control custom-switch">
+    <input  type="checkbox"
+            class="custom-control-input js-publication-switch do-not-warn-before-unload"
+            id="publication-switch-<%= object.uid %>"
+            data-target="<%= url_for [:publish, :admin, object, target_url_options] %>"
+            data-attribute="published"
+            <%= 'disabled' unless can?(:publish, object) %>
+            <%= 'checked' if object.published %>>
+    <label  class="custom-control-label"
+            for="publication-switch-<%= object.uid %>">
+      <strong>Published</strong>
+    </label>
+  </div>
+</div>

@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'enum_help'
 gem 'jquery-rails'
 gem 'bootstrap'
+gem 'summernote-rails', git: 'https://github.com/lespoupeesrusses/summernote-rails.git'
 
 group :development, :test do
   gem 'byebug'

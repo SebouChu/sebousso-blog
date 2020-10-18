@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/lespoupeesrusses/summernote-rails.git
+  revision: e04838a7a2e8109b42817f8482cf241c946fc4b0
+  specs:
+    summernote-rails (0.8.18.0)
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -272,6 +279,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  summernote-rails!
   web-console (>= 3.3.0)
   webdrivers
 

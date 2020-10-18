@@ -1,0 +1,52 @@
+<%= content_for :title, 'Articles' %>
+
+<div class="container">
+  <h1>Articles</h1>
+
+  <div class="actions mb-3">
+    <%= link_to 'New Article', new_admin_article_path, class: 'btn btn-success' %>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Infos</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= link_to_if can?(:read, article), article, [:admin, article] %></td>
+          <td><%= link_to_if can?(:read, article.author), article.author, [:admin, article.author] %></td>
+          <td>
+            <% if article.published? %>
+              <span class="badge badge-primary">Published</span>
+            <% else %>
+              <span class="badge badge-secondary">Draft</span>
+            <% end %>
+            <% if article.pinned? %>
+              <span class="badge badge-warning">Pinned</span>
+            <% end %>
+            <br>
+            <small><%= l article.published_at, format: :long %></small>
+          </td>
+          <td>
+            <% if can?(:update, article) %>
+              <%= link_to 'Edit', [:edit, :admin, article], class: 'btn btn-sm btn-primary' %>
+            <% end %>
+            <% if can?(:destroy, article) %>
+              <%= link_to 'Destroy',
+                          [:admin, article],
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' },
+                          class: 'btn btn-sm btn-danger' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
